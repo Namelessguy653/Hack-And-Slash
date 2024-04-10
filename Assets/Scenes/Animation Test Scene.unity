@@ -1434,6 +1434,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Maria WProp J J Ong
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 99bd17b582b2c30469623942d58cbef7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 99bd17b582b2c30469623942d58cbef7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 899de76b90ad757419c30a3eebf4f218, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99bd17b582b2c30469623942d58cbef7, type: 3}
 --- !u!1 &1857610451
