@@ -17,7 +17,7 @@ public class FollowObject : MonoBehaviour
     {
         // Find the player and NPC objects in the scene
         player = GameObject.FindGameObjectWithTag(playerTag).transform;
-        npc = GameObject.FindGameObjectWithTag(npcTag).transform;
+        //npc = GameObject.FindGameObjectWithTag(npcTag).transform;
 
         // Initially, target the player
         target = player.gameObject;
