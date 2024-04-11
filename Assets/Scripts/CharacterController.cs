@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
+
+    public Animator animator;
     public float speed = 5f;
     public float jumpForce = 10f;
     public Transform groundCheck;
@@ -27,6 +29,20 @@ public class CharacterController : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * speed * Time.deltaTime;
         transform.Translate(movement);
+
+        bool isWalking = Input.GetKey(KeyCode.W);
+
+        if (Input.GetKey(KeyCode.W))
+        {
+
+            animator.SetBool("IsWalking", isWalking);
+
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+        }
+
 
         // Jump control
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
