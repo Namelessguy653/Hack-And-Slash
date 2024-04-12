@@ -85,11 +85,11 @@ public class CharacterController : MonoBehaviour
         }
 
 
-    //    Jump control
-    //    if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-    //    {
-    //        Debug.Log("space is pressed");
-    //        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    //    }
+        //Jump control
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Debug.Log("space is pressed");
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
     }
 }
