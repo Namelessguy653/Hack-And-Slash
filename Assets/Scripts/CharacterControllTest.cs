@@ -48,6 +48,15 @@ public class CharacterControllTest : MonoBehaviour
         // Set swinging sword animation parameter
         animator.SetBool("IsSwingingSword", isSwingingSword);
 
+        if (moveHorizontal != 0)
+        {
+            // Rotate the character model
+            transform.Rotate(0f, moveHorizontal * rotationSpeed * Time.deltaTime, 0f);
+
+            // Rotate the camera around the character
+            cameraTransform.RotateAround(transform.position, Vector3.up, moveHorizontal * rotationSpeed * Time.deltaTime);
+        }
+
         // Set isSwingingSword bool based on Fire1 button press
         if (Input.GetButtonDown("Fire1"))
         {
@@ -58,12 +67,12 @@ public class CharacterControllTest : MonoBehaviour
             isSwingingSword = false;
         }
 
-        //// Rotation
-        //if (!isSwingingSword && moveHorizontal != 0)
-        //{
-        //    transform.Rotate(0f, moveHorizontal * rotationSpeed * Time.deltaTime, 0f);
-        //    cameraTransform.RotateAround(transform.position, Vector3.up, moveHorizontal * rotationSpeed * Time.deltaTime);
-        //}
+        // Rotation
+        if (!isSwingingSword && moveHorizontal != 0)
+        {
+            transform.Rotate(0f, moveHorizontal * rotationSpeed * Time.deltaTime, 0f);
+            cameraTransform.RotateAround(transform.position, Vector3.up, moveHorizontal * rotationSpeed * Time.deltaTime);
+        }
 
         // Jump control
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
