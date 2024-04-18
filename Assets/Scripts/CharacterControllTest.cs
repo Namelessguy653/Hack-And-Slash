@@ -1,3 +1,4 @@
+using GameAnalyticsSDK;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class CharacterControllTest : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundMask;
     public Transform cameraTransform;
+    [SerializeField]
+    private float timesSwordSwung = 0;
 
     private Rigidbody rb;
     private bool isGrounded;
@@ -60,6 +63,8 @@ public class CharacterControllTest : MonoBehaviour
         // Set isSwingingSword bool based on Fire1 button press
         if (Input.GetButtonDown("Fire1"))
         {
+            timesSwordSwung ++;
+            GameAnalytics.NewDesignEvent("OnSwing", timesSwordSwung);
             isSwingingSword = true;
         }
         else if (Input.GetButtonUp("Fire1"))
