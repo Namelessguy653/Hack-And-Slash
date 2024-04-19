@@ -3976,19 +3976,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1285200200, guid: d267f2b6e9ad6b940be71588f33a7881, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.98097336
+      value: 0.9809734
       objectReference: {fileID: 0}
     - target: {fileID: 1285200200, guid: d267f2b6e9ad6b940be71588f33a7881, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17347561
+      value: 0.17347564
       objectReference: {fileID: 0}
     - target: {fileID: 1285200200, guid: d267f2b6e9ad6b940be71588f33a7881, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.08583166
+      value: -0.08583172
       objectReference: {fileID: 0}
     - target: {fileID: 1285200200, guid: d267f2b6e9ad6b940be71588f33a7881, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.015178494
+      value: 0.015178504
       objectReference: {fileID: 0}
     - target: {fileID: 1292729352, guid: d267f2b6e9ad6b940be71588f33a7881, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4060,11 +4060,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2028541716, guid: d267f2b6e9ad6b940be71588f33a7881, type: 3}
       propertyPath: m_BindingMode
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2028541716, guid: d267f2b6e9ad6b940be71588f33a7881, type: 3}
       propertyPath: m_YAxis.Value
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2028541716, guid: d267f2b6e9ad6b940be71588f33a7881, type: 3}
       propertyPath: m_XAxis.m_InvertInput
@@ -16453,7 +16453,7 @@ MonoBehaviour:
   playerTag: Player
   npcTag: PlayerNPC
   moveSpeed: 5
-  detectionCollider: {fileID: 422679246}
+  detectionCollider: {fileID: 0}
   waypoints:
   - {fileID: 1089050733}
   - {fileID: 1882719436}
@@ -39090,7 +39090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1004128136}
   speed: 5
-  rotationSpeed: 100
+  rotationSpeed: 5
   jumpForce: 10
   groundCheck: {fileID: 64804928}
   groundMask:
@@ -79685,3 +79685,6 @@ SceneRoots:
   - {fileID: 766441988}
   - {fileID: 388989377}
   - {fileID: 422117189}
+  - {fileID: 118679182}
+  - {fileID: 493757821}
+  - {fileID: 1262552880}
