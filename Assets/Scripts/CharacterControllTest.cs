@@ -17,7 +17,8 @@ public class CharacterControllTest : MonoBehaviour
 
     private Rigidbody rb;
     private bool isGrounded;
-    private bool isSwingingSword = false; // New variable to track sword swinging state
+    private bool isSwingingSword = false;
+    private Vector3 cameraForward;
 
     void Start()
     {
@@ -31,39 +32,49 @@ public class CharacterControllTest : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
+        // Get the forward vector of the camera
+        cameraForward = cameraTransform.forward;
+        cameraForward.y = 0; // Ensure we only use the horizontal direction
+
         // Movement
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * speed * Time.deltaTime;
+
+        // Rotate the player to face the camera's forward vector when pressing 'W'
+        if (Input.GetKey(KeyCode.W))
+        {
+            RotatePlayerTowardsCameraForward();
+        }
+
+        // Apply movement
         transform.Translate(movement);
 
         // Animation
-        bool isWalkingForward = Input.GetKey(KeyCode.W);
-        bool isWalkingBackwards = Input.GetKey(KeyCode.S);
-        bool isWalkingRight = Input.GetKey(KeyCode.D);
-        bool isWalkingLeft = Input.GetKey(KeyCode.A);
+        bool isWalkingForward = moveVertical > 0;
+        bool isWalkingBackwards = moveVertical < 0;
+        bool isWalkingRight = moveHorizontal > 0;
+        bool isWalkingLeft = moveHorizontal < 0;
 
         // Set walking animation parameters
         animator.SetBool("IsWalkingFoward", isWalkingForward);
         animator.SetBool("IsWalkingBackwards", isWalkingBackwards);
         animator.SetBool("IsWalkingRight", isWalkingRight);
         animator.SetBool("IsWalkingLeft", isWalkingLeft);
-        animator.SetBool("NotWalking", !isWalkingForward && !isWalkingBackwards && !isWalkingRight && !isWalkingLeft);
+        animator.SetBool("NotWalking", !(isWalkingForward || isWalkingBackwards || isWalkingRight || isWalkingLeft));
 
         // Set swinging sword animation parameter
         animator.SetBool("IsSwingingSword", isSwingingSword);
 
+        // Rotate the character model if there's horizontal movement
         if (moveHorizontal != 0)
         {
-            // Rotate the character model
             transform.Rotate(0f, moveHorizontal * rotationSpeed * Time.deltaTime, 0f);
-
-            // Rotate the camera around the character
             cameraTransform.RotateAround(transform.position, Vector3.up, moveHorizontal * rotationSpeed * Time.deltaTime);
         }
 
         // Set isSwingingSword bool based on Fire1 button press
         if (Input.GetButtonDown("Fire1"))
         {
-            timesSwordSwung ++;
+            timesSwordSwung++;
             GameAnalytics.NewDesignEvent("OnSwing", timesSwordSwung);
             isSwingingSword = true;
         }
@@ -84,5 +95,12 @@ public class CharacterControllTest : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+    }
+
+    void RotatePlayerTowardsCameraForward()
+    {
+        // Rotate the player to face the camera's forward vector
+        Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 }
