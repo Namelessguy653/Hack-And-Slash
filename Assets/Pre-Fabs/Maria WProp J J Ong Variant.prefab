@@ -1204,9 +1204,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 99bd17b582b2c30469623942d58cbef7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1930691927}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 99bd17b582b2c30469623942d58cbef7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1930691930}
     - targetCorrespondingSourceObject: {fileID: 3135921509060577837, guid: 99bd17b582b2c30469623942d58cbef7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 482832084}
@@ -1381,25 +1378,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
---- !u!114 &1930691930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3471380103692126636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bca31cadaaf81694691dc1deb6b48cd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7892327140138420588}
-  speed: 5
-  jumpForce: 10
-  groundCheck: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!4 &4280391497471087382 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 99bd17b582b2c30469623942d58cbef7, type: 3}
@@ -1457,11 +1435,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.14666961, y: 0.9522791, z: 0.21145695}
   m_Center: {x: 0.009882458, y: 0.52928907, z: -0.018769903}
---- !u!95 &7892327140138420588 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 99bd17b582b2c30469623942d58cbef7, type: 3}
-  m_PrefabInstance: {fileID: 4390367650960684285}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8313550873013370897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3480699329000672020, guid: 99bd17b582b2c30469623942d58cbef7, type: 3}
