@@ -1,27 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
 
+    public Slider healthSlider; // Reference to the Slider UI element
+
     private void Start()
     {
         // Set the current health to the maximum health when the game starts
         currentHealth = maxHealth;
+
+        // Set the initial value of the health slider
+        UpdateHealthSlider();
     }
 
-    public void TakeDamage(int damageAmount)
+    private void OnCollisionEnter(Collision collision)
     {
-        // Reduce the player's current health by the damage amount
-        currentHealth -= damageAmount;
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(10); // You can adjust the damage value as needed
+        }
+    }
 
-        // Check if the player's health has dropped to zero or below
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        Debug.Log("Player took " + damage + " damage. Current Health: " + currentHealth);
+
+        // Update the health slider after taking damage
+        UpdateHealthSlider();
+
         if (currentHealth <= 0)
         {
-            // Player has died
             Die();
         }
     }
@@ -31,5 +46,14 @@ public class PlayerHealth : MonoBehaviour
         // Perform actions when the player dies, e.g., play death animation, respawn logic, etc.
         Debug.Log("Player has died!");
         // For example, you might want to reload the scene or show a game over screen.
+    }
+
+    void UpdateHealthSlider()
+    {
+        // Ensure that health doesn't exceed the maximum health
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        // Update the value of the health slider based on current health
+        healthSlider.value = (float)currentHealth / maxHealth;
     }
 }
